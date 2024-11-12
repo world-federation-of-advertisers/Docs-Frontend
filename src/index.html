@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Halo CMM Documentation</title>
+    
+    <!-- Import Docute stylesheet -->
+    <link rel="stylesheet" href="https://unpkg.com/docute@4/dist/docute.css">
+    
+    <!-- Custom font style -->
+    <style>
+      /* Import desired font from Google fonts */
+      @import url('https://fonts.googleapis.com/css?family=Lato');
+
+      /* Apply the font to the body to override the default one */
+      body {
+        font-family: 'Lato', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="docute"></div>
+
+    <!-- Docute scripts -->
+    <script src="https://unpkg.com/docute@4/dist/docute.js"></script>
+    
+    <script>
+      new Docute({
+        target: '#docute',
+        cssVariables: {
+          accentColor: '#FB002F'
+        },
+        sidebar: [
+          {
+            title: 'Operations',
+            collapse: true,
+            children: [
+              { title: 'Certificate Key Rotation', link: '/docs/operations/certificate-key-rotation.md' },
+              { title: 'Creating Resources', link: '/docs/operations/creating-resources.md' },
+              { title: 'Enabling Gaussian Noise', link: '/docs/operations/enabling-gaussian-noise-and-acdp-pbm.md' },
+              { title: 'Enabling Reach Only', link: '/docs/operations/enabling-reach-only-llv2.md' },
+              { title: 'Updating Release', link: '/docs/operations/updating-release.md' },
+              { title: 'Updating Retention Policies', link: '/docs/operations/updating-retention-policies.md' }
+            ]
+          },
+          {
+            title: 'Panel Match',
+            collapse: true,
+            children: [
+              { title: 'Compression Dictionaries', link: '/docs/panelmatch/compression-dictionaries.md' },
+              { title: 'Deploying', link: '/docs/panelmatch/deploying.md' }
+            ]
+          },
+          {
+            title: 'Elastic Kubernetes Service',
+            collapse: true,
+            children: [
+              { title: 'Duchy Deployment', link: '/docs/eks/duchy-deployment.md' },
+              { title: 'Machine Setup', link: '/docs/eks/machine-setup.md' },
+              { title: 'Metrics Deployment', link: '/docs/eks/metrics-deployment.md' },
+              { title: 'Terraform', link: '/docs/eks/terraform.md' }
+            ]
+          },
+          {
+            title: 'Google Kubernetes Engine',
+            collapse: true,
+            children: [
+              { title: 'Cluster Config', link: '/docs/gke/cluster-config.md' },
+              { title: 'Correctness Test', link: '/docs/gke/correctness-test.md' },
+              { title: 'Duchy Deployment', link: '/docs/gke/duchy-deployment.md' },
+              { title: 'Kingdom Deployment', link: '/docs/gke/kingdom-deployment.md' },
+              { title: 'Machine Setup', link: '/docs/gke/machine-setup.md' },
+              { title: 'Metrics Deployment', link: '/docs/gke/metrics-deployment.md' },
+              { title: 'Reporting Server Deployment', link: '/docs/gke/reporting-server-deployment.md' },
+              { title: 'Reporting Server Deployment (V2)', link: '/docs/gke/reporting-v2-server-deployment.md' },
+              { title: 'Simulator Deployment', link: '/docs/gke/simulator-deployment.md' },
+              { title: 'Terraform', link: '/docs/gke/terraform.md' }
+            ]
+          },
+          {
+            title: 'Contribute',
+            collapse: true,
+            children: [
+              { title: 'Development Standards', link: '/docs/dev-standards.md' },
+              { title: 'Code Style', link: '/docs/code-style.md' },
+              { title: 'Building', link: '/docs/building.md' },
+              { title: 'Remote Build', link: '/docs/remote-build.md' }
+            ]
+          },
+          {
+            title: 'GitHub',
+            link: 'https://github.com/world-federation-of-advertisers/'
+          },
+          {
+            title: 'Whitepaper',
+            link: 'https://wfanet.org/l/library/download/urn:uuid:ed583162-f638-4dd6-87b8-f831c4550761/the+halo+cross-media+measurement+framework.pdf'
+          }
+        ]
+      });
+    </script>
+  </body>
+</html>
