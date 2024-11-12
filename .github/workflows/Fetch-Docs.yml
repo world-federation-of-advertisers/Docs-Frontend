@@ -1,0 +1,52 @@
+name: Fetch Docs
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+
+  workflow_dispatch:
+
+jobs:
+  fetch-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set Up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch Docs from Repositories
+        run: |
+          mkdir -p src
+
+          repos=(
+            "world-federation-of-advertisers/cross-media-measurement README.md"
+            "world-federation-of-advertisers/cross-media-measurement docs"
+          )
+
+          for repo_path in "${repos[@]}"; do
+            repo=${repo_path% *}   # Extract repository name
+            path=${repo_path#* }   # Extract path
+
+            target_path="src/$(basename $repo)/$path"
+
+            # Clone if the target folder doesn't exist, otherwise pull updates
+            if [ ! -d "$target_path" ]; then
+              git clone --depth 1 --filter=blob:none --sparse "https://github.com/$repo.git" "$target_path"
+              cd "$target_path" && git sparse-checkout set "$path" && cd -
+            else
+              cd "$target_path" && git pull origin main && cd -
+            fi
+          done
+
+      - name: Commit and Push Changes
+        run: |
+          git add .
+          git commit -m "docs: Pull all the docs into one place"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
