@@ -16,7 +16,12 @@
 
 ## Description
 
-A repository that combines all Halo CMM docs into a single documentation frontend deployed on Cloudflare Pages. 
+A repository that combines all Halo CMM docs into a single documentation frontend deployed on Cloudflare Pages. At the moment, there are two sources where docs are fetched from: 
+
+- https://github.com/world-federation-of-advertisers/cross-media-measurement/docs
+- https://github.com/world-federation-of-advertisers/cross-media-measurement/README.md
+
+If you'd like more sources added, create a new issue [here](issues/new). 
 
 ## Owner
 
