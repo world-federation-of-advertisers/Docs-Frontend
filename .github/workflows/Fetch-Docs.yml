@@ -39,7 +39,11 @@ jobs:
       - name: Commit and Push Changes to Docs-Frontend
         run: |
           git add .
-          git commit -m "docs: Pull latest documentation files"
-          git push
+          if git diff-index --quiet HEAD; then
+            echo "No changes to commit."
+          else
+            git commit -m "docs: Pull latest documentation files"
+            git push
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
